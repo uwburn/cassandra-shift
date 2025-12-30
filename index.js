@@ -281,7 +281,7 @@ module.exports = class Shift extends EventEmitter {
     return info;
   }
 
-  async validate() {
+  async validate(rethrowError) {
     if (this.opts.useKeyspace) {
       await useKeyspace(this.cassandraClients[0], this.opts.keyspace);
       this.emit("usedKeyspace");
@@ -294,9 +294,17 @@ module.exports = class Shift extends EventEmitter {
       checkAppliedMigrations(appliedMigrations, availableMigrations);
       this.emit("checkedAppliedMigrations");
 
-      return false;
+      if (availableMigrations.length > appliedMigrations.length) {
+        throw new Error(`Applied ${appliedMigrations.length} out of ${availableMigrations.length} migrations`);
+      }
+
+      return true;
     }
     catch (err) {
+      if (rethrowError) {
+        throw err;
+      }
+
       return false;
     }
   }
