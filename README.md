@@ -116,7 +116,7 @@ const writeClient = new Client({
 await readClient.connect();
 await writeClient.connect();
 
-const migrator = new CassandraShift(
+const shift = new CassandraShift(
   [readClient, writeClient],
   {
     keyspace: "my_keyspace",
@@ -146,7 +146,7 @@ The options object supports the following properties:
 
 Applies all pending migrations in order.
 
-`await migrator.migrate();`
+`await shift.migrate();`
 
 Only migrations that have not yet been applied will be executed.
 
@@ -154,7 +154,7 @@ Only migrations that have not yet been applied will be executed.
 
 Drops the keyspace and recreates it.
 
-`await migrator.clean();`
+`await shift.clean();`
 
 This is a destructive operation and should only be used in development or testing environments.
 
@@ -162,7 +162,7 @@ This is a destructive operation and should only be used in development or testin
 
 Returns information about the current migration state.
 
-`const info = await migrator.info();`
+`const info = await shift.info();`
 
 This typically includes applied migrations and pending ones.
 
@@ -170,11 +170,11 @@ This typically includes applied migrations and pending ones.
 
 Validates that the defined migrations match the migrations already applied in the database.
 
-`const isValid = await migrator.validate();`
+`const isValid = await shift.validate();`
 
 If rethrowError is set to true, validation errors will be thrown instead of returning false:
 
-`await migrator.validate(true);`
+`await shift.validate(true);`
 
 ## Migration Strategy
 
