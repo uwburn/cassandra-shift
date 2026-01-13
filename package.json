@@ -4,6 +4,7 @@
   "description": "Cassandra migration utility as Node.js module",
   "main": "lib/index.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "node --experimental-vm-modules node_modules/.bin/jest --runInBand"
   },
   "type": "module",
