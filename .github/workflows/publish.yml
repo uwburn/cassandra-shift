@@ -1,9 +1,10 @@
 name: Publish
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_run:
+    workflows: ["Tests"]
+    types:
+      - completed
 
 permissions:
   id-token: write  # Required for OIDC
