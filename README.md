@@ -1,5 +1,8 @@
 # cassandra-shift
 
+[![CI](https://github.com/uwburn/cassandra-shift/actions/workflows/ci.yml/badge.svg)](https://github.com/uwburn/cassandra-shift/actions/workflows/ci.yml)
+
+
 `cassandra-shift` is a Node.js library for managing forward-only database migrations in Apache Cassandra.
 
 It provides a structured way to define, apply, validate, and inspect migrations, following Cassandra best practices and avoiding rollback-based workflows.
