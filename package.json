@@ -1,6 +1,6 @@
 {
   "name": "cassandra-shift",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "Cassandra migration utility as Node.js module",
   "main": "lib/index.js",
   "scripts": {
