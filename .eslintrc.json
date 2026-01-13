@@ -5,7 +5,8 @@
   },
   "extends": "eslint:recommended",
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2024,
+    "sourceType": "module"
   },
   "rules": {
     "indent": [
@@ -26,9 +27,6 @@
     ],
     "no-var": [
       "warn"
-    ],
-    "strict": [
-      "error"
     ],
     "no-console": [
       "off"
