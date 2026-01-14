@@ -1,11 +1,13 @@
 {
   "name": "cassandra-shift",
-  "version": "0.1.8",
+  "version": "0.2.2",
   "description": "Cassandra migration utility as Node.js module",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --runInBand"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uwburn/cassandra-shift.git"
@@ -27,6 +29,8 @@
   },
   "devDependencies": {
     "cassandra-driver": "^4.1.0",
-    "eslint": "^6.0.1"
+    "eslint": "^8.0.0",
+    "eslint-plugin-jest": "^29.12.1",
+    "jest": "^30.2.0"
   }
 }
