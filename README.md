@@ -1,11 +1,15 @@
 # cassandra-shift
 
+[![npm version](https://img.shields.io/npm/v/cassandra-shift)](https://www.npmjs.com/package/cassandra-shift)
 [![CI](https://github.com/uwburn/cassandra-shift/actions/workflows/ci.yml/badge.svg)](https://github.com/uwburn/cassandra-shift/actions/workflows/ci.yml)
+[![License](https://img.shields.io/npm/l/cassandra-shift)](https://github.com/uwburn/cassandra-shift/blob/master/LICENSE)
 
 
 `cassandra-shift` is a Node.js library for managing forward-only database migrations in Apache Cassandra.
 
 It provides a structured way to define, apply, validate, and inspect migrations, following Cassandra best practices and avoiding rollback-based workflows.
+
+**Notice: starting with version 0.2, this module uses ES6. JS migrations are also expected to be ES6 modules.**
 
 ## Overview
 
@@ -80,7 +84,7 @@ Example:
 `migrations/002_add_age_column.js`
 
 ```(javascript)
-module.exports = async function (clients) {
+export default async function (clients) {
   const writeClient = clients[0];
 
   await writeClient.execute(`
@@ -89,11 +93,11 @@ module.exports = async function (clients) {
 };
 ```
 
-The clients parameter is the same array of Cassandra clients passed to the migrator.
+The clients parameter is the same array of Cassandra clients passed to the shift instance.
 
 ## Usage
 
-### Creating the Migrator
+### Creating the instance
 
 The library exports a class.
 
