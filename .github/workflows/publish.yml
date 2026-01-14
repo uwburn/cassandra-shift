@@ -11,6 +11,13 @@ permissions:
   contents: read
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump workflow_run payload
+        run: |
+          echo "=== workflow_run ==="
+          echo '${{ toJson(github.event.workflow_run) }}'
   publish:
     if: >
       github.event.workflow_run.conclusion == 'success' &&
